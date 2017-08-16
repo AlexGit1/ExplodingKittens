@@ -18,21 +18,30 @@ public class Netzwerk {
             System.out.println(e);
         }
     }
-    public static Object recive() {
+    public static int recive() {
+        try {
+            ServerSocket s = new ServerSocket(4014);
+            Socket incomingSocket = s.accept();
+            s.close();
+            int bytesRead = incomingSocket.getInputStream().read();
+            return bytesRead;
+        } catch (IOException e) {
+            System.out.println(e);
+            return 0;
+        }
+    }
+    public static String get_ip(){
         try {
             ServerSocket s = new ServerSocket(4014);
             Socket incomingSocket = s.accept();
             int bytesRead = incomingSocket.getInputStream().read();
             s.close();
-            if (bytesRead == 1) {
-                String ret = incomingSocket.getLocalAddress().toString();
-                return ret;
-            }else {
-                return bytesRead;
-            }
+            String ret = incomingSocket.getRemoteSocketAddress().toString();
+            String retu = ret.substring(1,ret.indexOf(':'));
+            return retu;
         } catch (IOException e) {
             System.out.println(e);
-            return 0;
+            return "127.0.0.1";
         }
     }
 }
