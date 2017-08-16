@@ -1,5 +1,5 @@
 package explodingkitten;
-//BUILD 1708160
+//BUILD 1708161
 
 import javafx.embed.swing.JFXPanel;
 
@@ -73,9 +73,10 @@ public class Main {
                 frame.setVisible(false);
 
 
-                if (Netzwerk.recive() == 1){
+                //if (Netzwerk.recive() == 1){
+                Netzwerk.send(Netzwerk.get_ip(),2);
                      Game game = new Game();
-                }
+                //}
             }
         });
         joinbutton.addActionListener(new ActionListener() {
@@ -83,7 +84,7 @@ public class Main {
             public void actionPerformed(ActionEvent e) {
                 String eingabe = JOptionPane.showInputDialog(null, "Wie lautet die Adresse des Hostes ?","", JOptionPane.PLAIN_MESSAGE);
                 try {
-                    Netzwerk.send("192.168.60.132",1);
+                    Netzwerk.send(eingabe,1);
                 }
                 catch(InputMismatchException s){
 
