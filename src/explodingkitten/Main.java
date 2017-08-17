@@ -1,5 +1,5 @@
 package explodingkitten;
-//BUILD 1708161
+//BUILD 1708170
 
 import javafx.embed.swing.JFXPanel;
 
@@ -75,7 +75,7 @@ public class Main {
 
                 //if (Netzwerk.recive() == 1){
                 Netzwerk.send(Netzwerk.get_ip(),2);
-                     Game game = new Game();
+                Game game = new Game();
                 //}
             }
         });
@@ -91,7 +91,7 @@ public class Main {
                 };
 
                      if (Netzwerk.recive() == 2){
-                         System.out.println("Arschwasser");
+                         Game game = new Game();
                      }
 
                     }
